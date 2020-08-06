@@ -161,15 +161,72 @@ class LinkedList:
             return _reverse_recursive(cur, prev)
 
         self.head = _reverse_recursive(cur=self.head, prev=None)
+
+    def merge_sorted(self, llist):
+
+        p = self.head
+        q = llist.head
+        s = None
+        if p is None:
+            return q
+        if q is None:
+            return p
+
+        if p is not None and q is not None:
+            if p.data <= q.data:
+                s = p
+                p = s.next
+            else:
+                s = q
+                q = s.next
+            new_head = s
+
+        while p is not None and q is not None:
+            if p.data <= q.data:
+                s.next = p
+                s = p
+                p = s.next
+            else:
+                s.next = q
+                s = q
+                q = s.next
+        
+        if q is None:
+            s.next = p
+        if p is None:
+            s.next = q
+
+        return new_head
+
+        
     
 
 
-llist = LinkedList()
-llist.append("A")
-llist.append("B")
-llist.append("C")
-llist.append("D")
-llist.reverse_recursive()
+llist1 = LinkedList()
+llist2 = LinkedList()
+
+llist1.append(1)
+llist1.append(5)
+llist1.append(7)
+llist1.append(9)
+llist1.append(10)
+
+llist2.append(2)
+llist2.append(3)
+llist2.append(4)
+llist2.append(6)
+llist2.append(8)
+
+llist1.merge_sorted(llist2)
+llist1.print_list()
+
+
+
+# llist.append("A")
+# llist.append("B")
+# llist.append("C")
+# llist.append("D")
+# llist.reverse_recursive()
 # llist.reverse_iterative()
 # llist.node_swap("A", "B")
 # print(llist.len_recursive(llist.head))
@@ -177,4 +234,4 @@ llist.reverse_recursive()
 #llist.delete_node("C")
 # llist.delete_node_with_position(3)
 
-llist.print_list()
+# llist.print_list()
