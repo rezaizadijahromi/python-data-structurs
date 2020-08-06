@@ -95,7 +95,36 @@ class LinkedList:
         
         return 1 + self.len_recursive(node.next)
 
+    def node_swap(self, key1, key2):
+        if key1 == key2:
+            return
 
+        prev_1 = None
+        curr_1 = self.head
+        while curr_1 is not None and curr_1.data != key1:
+            prev_1 = curr_1
+            curr_1 = curr_1.next
+
+        prev_2 = None
+        curr_2 = self.head
+        while curr_2 is not None and curr_2.data != key2:
+            prev_2 = curr_2
+            curr_2 = curr_2.next
+
+        if curr_1 is None or curr_2 is None:
+            return
+
+        if prev_1 is not None:
+            prev_1.next = curr_2
+        else:
+            self.head = curr_2
+
+        if prev_2 is not None:
+            prev_2.next = curr_1
+        else:
+            self.head = curr_2
+
+        curr_1.next, curr_2.next = curr_2.next, curr_1.next
 
 
 
@@ -104,10 +133,10 @@ llist.append("A")
 llist.append("B")
 llist.append("C")
 llist.append("D")
-
-print(llist.len_recursive(llist.head))
+llist.node_swap("A", "B")
+# print(llist.len_recursive(llist.head))
 # llist.insert_after_node(llist.head.next, "E")
 #llist.delete_node("C")
 # llist.delete_node_with_position(3)
 
-# llist.print_list()
+llist.print_list()
