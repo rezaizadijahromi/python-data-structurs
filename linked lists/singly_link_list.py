@@ -126,6 +126,42 @@ class LinkedList:
 
         curr_1.next, curr_2.next = curr_2.next, curr_1.next
 
+    def print_helper(self, node, name):
+        if node is None:
+            print(name + ":None")
+        else:
+            print(name + ":" + node.data)
+
+    def reverse_iterative(self):
+        prev = None
+        curr = self.head
+
+        while curr is not None:
+            nxt = curr.next
+            curr.next = prev
+
+            self.print_helper(prev, "PREV")
+            self.print_helper(curr, "CUR")
+            self.print_helper(nxt, "NXT")
+
+            prev = curr
+            curr = nxt
+
+        self.head = prev
+
+    def reverse_recursive(self):
+        def _reverse_recursive(cur, prev):
+            if cur is None:
+                return prev
+            
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(cur=self.head, prev=None)
+    
 
 
 llist = LinkedList()
@@ -133,7 +169,9 @@ llist.append("A")
 llist.append("B")
 llist.append("C")
 llist.append("D")
-llist.node_swap("A", "B")
+llist.reverse_recursive()
+# llist.reverse_iterative()
+# llist.node_swap("A", "B")
 # print(llist.len_recursive(llist.head))
 # llist.insert_after_node(llist.head.next, "E")
 #llist.delete_node("C")
