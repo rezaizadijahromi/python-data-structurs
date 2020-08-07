@@ -244,15 +244,47 @@ class LinkedList:
         print(p.data)
         return p.data
 
+    def count_occurences_iterative(self, data):
+        current = self.head
+
+        count = 0
+        while current is not None:
+            if  current.data == data:
+                count += 1
+            current = current.next
+
+        return count
+    
+    def count_occurences_recursive(self, node, data):
+        if node is None:
+            return 0
+        
+        if node.data == data:
+            return 1 + self.count_occurences_recursive(node.next, data)
+        else:
+            return self.count_occurences_recursive(node.next, data)
+
 
 
 Linked = LinkedList()
-Linked.append("A")
-Linked.append("B")
-Linked.append("C")
-Linked.append("D")
-Linked.point_nth_from_last_sec(2)
-Linked.point_nth_from_last(2)
+Linked.append(1)
+Linked.append(2)
+Linked.append(1)
+Linked.append(4)
+Linked.append(7)
+Linked.append(7)
+Linked.append(7)
+print(Linked.count_occurences_iterative(7))
+print(Linked.count_occurences_recursive(Linked.head, 7))
+
+
+
+# Linked.append("A")
+# Linked.append("B")
+# Linked.append("C")
+# Linked.append("D")
+# Linked.point_nth_from_last_sec(2)
+# Linked.point_nth_from_last(2)
 
 
 
