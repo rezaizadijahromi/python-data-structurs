@@ -198,27 +198,95 @@ class LinkedList:
 
         return new_head
 
-        
-    
+    def remove_duplicates(self):
+        current = self.head
+        pre = None
+        dup_values = {}
+        while current is not None:
+            if current.data in dup_values:
+                pre.next = current.next
+                current = None
+            else:
+                dup_values[current.data] = 1
+                pre = current
+
+            print(dup_values)
+            current = pre.next
+    def point_nth_from_last(self, n):
+        total_len = self.len_iterative()
+        cur = self.head
+
+        while cur is not None:
+            if total_len == n:
+                print(cur.data)
+            total_len -= 1
+            cur = cur.next
+        if cur is None:
+            return
+
+    def point_nth_from_last_sec(self, n):
+        p = self.head
+        q = self.head
+
+        count = 0
+        while q is not None and count < n:
+            q = q.next
+            count += 1
+
+        if q is None:
+            print(f"{n} is greater than number of node in list")
+            return
+
+        while p is not None and q is not None:
+            p = p.next
+            q = q.next
+
+        print(p.data)
+        return p.data
 
 
-llist1 = LinkedList()
-llist2 = LinkedList()
 
-llist1.append(1)
-llist1.append(5)
-llist1.append(7)
-llist1.append(9)
-llist1.append(10)
+Linked = LinkedList()
+Linked.append("A")
+Linked.append("B")
+Linked.append("C")
+Linked.append("D")
+Linked.point_nth_from_last_sec(2)
+Linked.point_nth_from_last(2)
 
-llist2.append(2)
-llist2.append(3)
-llist2.append(4)
-llist2.append(6)
-llist2.append(8)
 
-llist1.merge_sorted(llist2)
-llist1.print_list()
+
+# Linked.append(1)
+# Linked.append(2)
+# Linked.append(1)
+# Linked.append(4)
+# Linked.append(7)
+# Linked.append(7)
+# Linked.append(7)
+# Linked.append(8)
+# Linked.append(6)
+
+# Linked.remove_duplicates()
+# Linked.print_list()
+
+
+# llist1 = LinkedList()
+# llist2 = LinkedList()
+
+# llist1.append(1)
+# llist1.append(5)
+# llist1.append(7)
+# llist1.append(9)
+# llist1.append(10)
+
+# llist2.append(2)
+# llist2.append(3)
+# llist2.append(4)
+# llist2.append(6)
+# llist2.append(8)
+
+# llist1.merge_sorted(llist2)
+# llist1.print_list()
 
 
 
