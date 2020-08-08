@@ -337,16 +337,21 @@ class LinkedList:
             count += 1
         return True
 
+    def move_tail_to_head(self):
+        current = self.head
 
+        prev = None
+        while current.next is not None:
+            prev = current
+            current = current.next
 
-Linked = LinkedList()
+        
+        current.next = self.head
+        prev.next = None
+        self.head = current
 
-Linked.append("R")
-Linked.append("A")
-Linked.append("D")
-Linked.append("A")
-Linked.append("R")
-print(Linked.is_palindrome1())
+        # print(prev.data)
+
 
 
 Linked1 = LinkedList()
@@ -354,7 +359,28 @@ Linked1 = LinkedList()
 Linked1.append("A")
 Linked1.append("B")
 Linked1.append("C")
-print(Linked1.is_palindrome3())
+Linked1.append("D")
+
+Linked1.move_tail_to_head()
+Linked1.print_list()
+
+
+# Linked = LinkedList()
+
+# Linked.append("R")
+# Linked.append("A")
+# Linked.append("D")
+# Linked.append("A")
+# Linked.append("R")
+# print(Linked.is_palindrome1())
+
+
+# Linked1 = LinkedList()
+
+# Linked1.append("A")
+# Linked1.append("B")
+# Linked1.append("C")
+# print(Linked1.is_palindrome3())
 
 
 
