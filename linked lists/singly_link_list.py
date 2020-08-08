@@ -289,6 +289,39 @@ class LinkedList:
         self.head = p.next
         p.next = None
 
+    def is_palindrome1(self):
+        s = ""
+        current = self.head
+        while current is not None:
+            s += current
+            current = current.next
+
+        return current == current[::-1]
+    
+    def is_palindrome2(self):
+        current = self.head
+        s = []
+
+        while current is not None:
+            s.append(current.ddata)
+            current = current.next
+
+        current = self.head
+
+        while current is not None:
+            data = s.pop()
+            if current.data == data:
+                return True
+
+            current = current.next
+
+        return False
+
+    def is_palindrome3(self):
+        pass
+
+    
+
 
 Linked = LinkedList()
 Linked.append(1)
