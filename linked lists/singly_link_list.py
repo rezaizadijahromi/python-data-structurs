@@ -293,10 +293,10 @@ class LinkedList:
         s = ""
         current = self.head
         while current is not None:
-            s += current
+            s += current.data
             current = current.next
 
-        return current == current[::-1]
+        return s == s[::-1]
     
     def is_palindrome2(self):
         current = self.head
@@ -318,25 +318,60 @@ class LinkedList:
         return False
 
     def is_palindrome3(self):
-        pass
+        p = self.head
+        q = self.head
+        prev = []
 
-    
+        i = 0
+        while q is not None:
+            prev.append(q)
+            q = q.next
+            i += 1
+        q = prev[i-1]
+
+        count = 1
+        while count <= i // 2 + 1:
+            if prev[-count].data != p.data:
+                return False
+            p = p.next
+            count += 1
+        return True
+
 
 
 Linked = LinkedList()
-Linked.append(1)
-Linked.append(2)
-Linked.append(3)
-Linked.append(4)
-Linked.append(5)
-Linked.append(6)
 
-Linked.print_list()
-print("\n")
+Linked.append("R")
+Linked.append("A")
+Linked.append("D")
+Linked.append("A")
+Linked.append("R")
+print(Linked.is_palindrome1())
 
-Linked.rotate(4)
 
-Linked.print_list()
+Linked1 = LinkedList()
+
+Linked1.append("A")
+Linked1.append("B")
+Linked1.append("C")
+print(Linked1.is_palindrome3())
+
+
+
+# Linked = LinkedList()
+# Linked.append(1)
+# Linked.append(2)
+# Linked.append(3)
+# Linked.append(4)
+# Linked.append(5)
+# Linked.append(6)
+
+# Linked.print_list()
+# print("\n")
+
+# Linked.rotate(4)
+
+# Linked.print_list()
 
 
 # Linked.append(1)
