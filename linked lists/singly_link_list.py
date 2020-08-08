@@ -352,17 +352,70 @@ class LinkedList:
 
         # print(prev.data)
 
+    def sum_two_lists(self, llist):
+        p = self.head
+
+        q = llist.head
+
+        sum_llist = LinkedList()
+
+        carry = 0
+        while p is not None or q is not None:
+            if p is None:
+                i = 0
+            else:
+                i = p.data
+
+            if q is None:
+                j = 0
+            else:
+                j = q.data
+
+            s = i + j + carry
+            # print("S:" + str(s))
+
+            if s >= 10:
+                carry = 1
+                remainder = s % 10
+                sum_llist.append(remainder)
+
+            else:
+                carry = 0
+                sum_llist.append(s)
+
+            if p is not None:
+                p = p.next
+            if q is not None:
+                q = q.next
+
+        sum_llist.print_list()
 
 
-Linked1 = LinkedList()
 
-Linked1.append("A")
-Linked1.append("B")
-Linked1.append("C")
-Linked1.append("D")
 
-Linked1.move_tail_to_head()
-Linked1.print_list()
+llist1 = LinkedList()
+llist1.append(5)
+llist1.append(6)
+llist1.append(3)
+
+llist2 = LinkedList()
+llist2.append(8)
+llist2.append(4)
+llist2.append(2)
+
+print(365 + 248)
+llist1.sum_two_lists(llist2)
+
+
+# Linked1 = LinkedList()
+
+# Linked1.append("A")
+# Linked1.append("B")
+# Linked1.append("C")
+# Linked1.append("D")
+
+# Linked1.move_tail_to_head()
+# Linked1.print_list()
 
 
 # Linked = LinkedList()
