@@ -6,3 +6,21 @@ def linear_search(data, target):
         if data[i] == target:
             return True
     return False
+
+def binary_search_iterative(data, target):
+    low = 0
+    high = len(data) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if target == data[mid]:
+            print("founded")
+            return True
+        elif target < data[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    print("Not find")
+    return False
+
+obj = binary_search_iterative(data=data, target=target)
