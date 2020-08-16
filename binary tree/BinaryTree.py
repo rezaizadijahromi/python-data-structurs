@@ -31,6 +31,12 @@ class BinaryTree(object):
             traversal = self.inorder_print(start.right, traversal)
         return traversal
 
+    def postorder_print(self, start, traversal):
+        if start:
+            traversal = self.inorder_print(start.left, traversal)
+            traversal = self.inorder_print(start.right, traversal)
+            traversal += (str(start.value) + "-")
+
 
  
 
