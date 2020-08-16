@@ -40,6 +40,7 @@ class BinaryTree(object):
             traversal = self.inorder_print(start.left, traversal)
             traversal = self.inorder_print(start.right, traversal)
             traversal += (str(start.value) + "-")
+        return traversal
 
 
  
@@ -53,7 +54,7 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 tree.root.right.right.right = Node(8)
 
-print(tree.print_tree("inorder"))
+print(tree.print_tree("postorder"))
 # print(tree.preorder_print(tree.root, ""))
 
 
