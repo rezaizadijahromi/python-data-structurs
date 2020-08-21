@@ -143,6 +143,10 @@ class BinaryTree(object):
                 stack.push(node.right)
         return size
    
+    def size_(self, node):
+        if node is None:
+            return 0
+        return 1 + self.size_(node.left) + self.size_(node.right)
 
  
 
