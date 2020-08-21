@@ -141,7 +141,7 @@ class BinaryTree(object):
             if node.right:
                 size += 1
                 stack.push(node.right)
-        
+        return size
    
 
  
