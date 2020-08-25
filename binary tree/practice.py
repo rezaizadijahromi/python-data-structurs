@@ -25,6 +25,35 @@ class Queue:
     def __len__(self):
         return self.size()
 
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def __len__(self):
+        return self.size()
+
+    def size(self):
+        return len(self.items)
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):
+        return self.items.append(item)
+
+    def pop(self):
+        if not self.empty():
+            return self.items.pop()
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+
+    def __str__(self):
+        s = ""
+        for i in range(len(self.items)):
+            s += str(self.items[i].value) + '-'
+        return s
 
 class Node:
     def __init__(self, value):
@@ -97,6 +126,43 @@ class BinaryTree:
 
         return traversal
 
+
+    def hight(self, node):
+        if node is None:
+            return None
+
+        left_height = self.height(node.left)
+        right_height = self.height(node.right)
+
+        return 1 + max(left_height, right_height)
+
+    def size(self):
+        if self.root is None:
+            return None
+
+        stack = Stack()
+        stack.push(self.root)
+        size = 1
+        while stack is not None:
+            node = stack.pop()
+            if node.left:
+                size += 1
+                stack.push(node.left)
+
+            if node.right:
+                size += 1
+                stack.push(node.right)
+
+        return size
+
+    def size_recursive(self, node):
+        if node is None:
+            return 0
+
+        return 1 + self.size_recursive(node.left) + self.size_recursive(node.right)
+
+        
+
 tree = BinaryTree(1)
 tree.root.left = Node(2)
 tree.root.right = Node(3)
@@ -125,7 +191,6 @@ def test_insert():
     for i in range(1, 8):
         items.insert(0, i)
 
-    print(items)
 
 f1 = test_append()
 f2 = test_insert()
