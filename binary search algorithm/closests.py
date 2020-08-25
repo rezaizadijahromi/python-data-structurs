@@ -3,7 +3,7 @@
 def find_closest_num(A, target):
     min_diff = float("inf")
     low = 0
-    high = len(A) - 1
+    high = len(A) 
     closest_num = None
 
     if len(A) == 0:
@@ -13,7 +13,7 @@ def find_closest_num(A, target):
         return A[0]
 
     while low <= high:
-        mid = (high - low) // 2
+        mid = (high + low) // 2
 
         if mid + 1 < len(A):
             min_diff_right = abs(A[mid+1] - target)
