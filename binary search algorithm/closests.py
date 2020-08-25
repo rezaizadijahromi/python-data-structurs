@@ -29,9 +29,9 @@ def find_closest_num(A, target):
             closest_num = A[mid+1]
 
         if A[mid] > target:
-            low = mid + 1
-        elif A[mid] < target:
             high = mid - 1
+        elif target > A[mid]:
+            low = mid + 1
 
         else:
             return A[mid]
