@@ -1,6 +1,6 @@
 def find_highest_number(A):
     low = 0
-    high = len(A)
+    high = len(A)-1
 
     if len(A) < 3:
         return None
